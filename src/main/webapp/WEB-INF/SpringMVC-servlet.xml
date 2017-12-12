@@ -47,4 +47,26 @@
 		up static resources in the ${webappRoot}/resources/ directory -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
+<!-- the datasource -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/IMDBTVSeriesMgtSysDB" />
+		<property name="username" value="root" />
+		<property name="password" value="Mengistu1" />
+	</bean>
+
+	<!-- hibernate Properties -->
+	<bean id="hibernateProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect
+				</prop>
+				<prop key="connection.pool_size">1</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
 </beans>
